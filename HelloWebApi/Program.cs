@@ -12,5 +12,7 @@ var app = builder.Build();
 //uygulamanýn swagger kullanmasýný aktifleþtiriyoruz.
 app.UseSwagger();
 app.UseSwaggerUI();
+//Uygulamanýn controller tarafýndan yönlendirilmesi maplenmesi saðlanýyor.
+app.MapControllers();
 
 app.Run();

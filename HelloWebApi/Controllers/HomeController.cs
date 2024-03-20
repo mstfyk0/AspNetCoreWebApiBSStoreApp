@@ -8,7 +8,12 @@ namespace HelloWebApi.Controllers
     [Route("home")]
     public class HomeController : ControllerBase
     {
+        [HttpGet]
+        public String GetMessage()
+        {
 
+            return "Hello world.";
+        }
 
     }
 }
