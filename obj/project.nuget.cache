@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "zxziZrIS81uatLkT2/4iIPqJ+57Z72wmKKI3SJE3VwFmSYj762jA3ll+i9w1qVpPQBHFlGenMdovDA1tbdrc4w==",
+  "dgSpecHash": "fVchg3RLlhGiU/kBBzR8Wn/RmhK/gxd4hP2r4JOm2sdLx1NhqK4FCMemTD9FhRWh6BizS1VnklfddEOuftR+wA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\mstyg\\source\\repos\\Asp.Net Core Web API - BSStore App\\Asp.Net Core Web API - BSStore App.csproj",
+  "projectFilePath": "C:\\Users\\mstyg\\source\\repos\\AspNetCoreWebAPIBSStoreApp\\AspNetCoreWebAPIBSStoreApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\mstyg\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
     "C:\\Users\\mstyg\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
