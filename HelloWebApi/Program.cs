@@ -9,9 +9,16 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
-//uygulamanýn swagger kullanmasýný aktifleþtiriyoruz.
-app.UseSwagger();
-app.UseSwaggerUI();
+
+//Eðer ortam deðiþkeni (environment variable) development ise Swagger ile bizi karþýlasýn diye configure yapýyoruz.
+if (app.Environment.IsDevelopment())
+{
+    //uygulamanýn swagger kullanmasýný aktifleþtiriyoruz.
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+
+
 //Uygulamanýn controller tarafýndan yönlendirilmesi maplenmesi saðlanýyor.
 app.MapControllers();
 

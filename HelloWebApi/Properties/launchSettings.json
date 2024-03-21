@@ -16,6 +16,7 @@
       "launchUrl": "swagger",
       "applicationUrl": "https://localhost:7278;http://localhost:5097",
       "environmentVariables": {
+        //hellowebapi development ortamında çalışmasını ayarlıyoruz.
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
@@ -23,7 +24,9 @@
       "commandName": "IISExpress",
       "launchBrowser": true,
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        //Environment Varialbe
+        //IIS production ortamında çalışmasını ayarlıyoruz.
+        "ASPNETCORE_ENVIRONMENT": "Production"
       }
     }
   }
