@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCoreWebAPIBSStoreApp"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelloWebApi", "HelloWebApi\HelloWebApi.csproj", "{D13D9037-FEBC-4B94-A301-12C2B659994C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductApi", "ProductApi\ProductApi.csproj", "{A3B2848D-D842-44C7-850F-0988CE9D7340}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{D13D9037-FEBC-4B94-A301-12C2B659994C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D13D9037-FEBC-4B94-A301-12C2B659994C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D13D9037-FEBC-4B94-A301-12C2B659994C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3B2848D-D842-44C7-850F-0988CE9D7340}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3B2848D-D842-44C7-850F-0988CE9D7340}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3B2848D-D842-44C7-850F-0988CE9D7340}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3B2848D-D842-44C7-850F-0988CE9D7340}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
