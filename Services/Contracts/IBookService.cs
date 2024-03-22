@@ -6,7 +6,6 @@ namespace Services.Contracts
     {
         IEnumerable<Book> GetAllBooks(bool trackChanges);
         Book GetOneBookById(int id, bool trackChanges);
-
         Book CreateOneBook(Book book);  
         void UpdateOneBook(int id ,Book book);
         void DeleteOneBook(int id,bool trackChanges); 
