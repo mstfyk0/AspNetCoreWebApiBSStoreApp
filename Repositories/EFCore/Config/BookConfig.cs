@@ -1,8 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Entities.Models;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Entities.Models;
+using Microsoft.EntityFrameworkCore;
 
-namespace WebApi.Repositories.Config
+namespace Repositories.EFCore.Config
 {
     public class BookConfig : IEntityTypeConfiguration<Book>
     {
@@ -12,10 +12,7 @@ namespace WebApi.Repositories.Config
                 .HasData(
                     new Book { Id = 1, Title = "Hacivat ile karagöz", Price = 100 },
                     new Book { Id = 2, Title = "Sherlock Holmes", Price = 67 },
-                    new Book { Id = 3, Title = "Kuantum fiziğini öğreniyoruz.", Price = 1689 }
-
-
-                );
+                    new Book { Id = 3, Title = "Kuantum fiziğini öğreniyoruz.", Price = 1689 });
         }
     }
 }
