@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Entities.Models
 {
-    internal class Book
+    public class Book
     {
+        public int Id { get; set; }
+        public String? Title { get; set; }
+        public decimal Price { get; set; }
+
     }
 }
