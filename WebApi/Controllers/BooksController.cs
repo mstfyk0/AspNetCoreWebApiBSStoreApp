@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Entities.Models;
 using Repositories.EFCore;
 using Repositories.Contracts;
+using Services.Contracts;
 
 namespace WebApi.Controllers
 {
@@ -11,9 +12,9 @@ namespace WebApi.Controllers
     [ApiController]
     public class BooksController : ControllerBase
     {
-        private readonly IRepositoryManager _manager;
+        private readonly IServiceManager _manager;
 
-        public BooksController(IRepositoryManager manager)
+        public BooksController(IServiceManager manager)
         {
             _manager = manager;
         }
@@ -22,7 +23,7 @@ namespace WebApi.Controllers
         {
             try
             {
-                var books = _manager.BookRepository.GetAllBooks(false);
+                var books = _manager.BookService.GetAllBooks(false);
                 return Ok(books);
             }
             catch (Exception ex)
@@ -42,7 +43,7 @@ namespace WebApi.Controllers
             {
                 //Linq sorgusu ile parametreye gönderilen id ile books da ki id ye eşit olan kayıt getirilecek.
                 var book = _manager
-                    .BookRepository.GetOneBookById(id, false);
+                    .BookService.GetOneBookById(id, false);
                     
 
                 //Eğer book da veri yoksa NotFound yani bulunamadı hatası veriyoruz.
@@ -70,8 +71,7 @@ namespace WebApi.Controllers
                 if (book is null)
                     return BadRequest(); //400
 
-                _manager.BookRepository.Create(book);
-                _manager.Save(); 
+                _manager.BookService.CreateOneBook(book); 
                 return StatusCode(201, book);
             }
             catch (Exception ex)
@@ -87,22 +87,29 @@ namespace WebApi.Controllers
         {
             try
             {
-                //check book
-                var entity = _manager
-                    .BookRepository.GetOneBookById(id, true);
 
-                if (entity is null)
-                    return NotFound(); //404
+                if (book is null)
+                    return BadRequest();
 
-                //check id 
-                if (book.Id != id)
-                    return BadRequest(); //400
+                // //check book
+                // var entity = _manager
+                //     .BookService.GetOneBookById(id, true);
 
-               entity.Title = book.Title;
-               entity.Price = book.Price;
+                // if (entity is null)
+                //     return NotFound(); //404
 
-                _manager.BookRepository.UpdateOneBook(entity);
-                _manager.Save();
+                // //check id 
+                // if (book.Id != id)
+                //     return BadRequest(); //400
+
+                //entity.Title = book.Title;
+                //entity.Price = book.Price;
+
+                // _manager.BookService.UpdateOneBook(id,entity,true);
+                // //_manager.Save/*();*/
+
+                _manager.BookService.UpdateOneBook(id, book, true);
+
 
                 return Ok(book);
 
@@ -120,16 +127,9 @@ namespace WebApi.Controllers
         {
             try
             {
-                //check book
-                var entity = _manager
-                    .BookRepository.GetOneBookById(id,false);
 
-                if (entity is null)
-                    return NotFound(); //404
-
-
-                _manager.BookRepository.DeleteOneBook(entity);
-                _manager.Save();
+                _manager.BookService.DeleteOneBook(id,false);
+                //_manager.Save();
 
                 return NoContent();
 
@@ -141,6 +141,7 @@ namespace WebApi.Controllers
             }
 
         }
+
         [HttpPatch("{id:int}")]
         public IActionResult PartialUpdateOneBook([FromRoute(Name = "id")] int id, [FromBody] JsonPatchDocument<Book> bookPatch)
         {
@@ -148,14 +149,14 @@ namespace WebApi.Controllers
             {
                 //check book
                 var entity = _manager
-                    .BookRepository.GetOneBookById(id,true);
+                    .BookService.GetOneBookById(id,true);
 
                 if (entity is null)
                     return NotFound(); //404
 
 
                 bookPatch.ApplyTo(entity);
-                _manager.BookRepository.UpdateOneBook(entity);
+                _manager.BookService.UpdateOneBook(id, entity, true);
                 return NoContent();
 
             }

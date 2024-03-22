@@ -65,7 +65,7 @@ namespace Services
             entity.Title = book.Title;
             entity.Price = book.Price;
 
-            _manager.BookRepository.UpdateOneBook(entity);
+            _manager.BookRepository.UpdateOneBook(book);
             _manager.Save();
 
         }
