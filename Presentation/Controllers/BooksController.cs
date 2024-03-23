@@ -1,9 +1,9 @@
-﻿using Entities.Models;
+﻿using Entities.Exceptions;
+using Entities.Models;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Services.Contracts;
-using System;
-
+using Entities.Exceptions;
 
 namespace Presentation.Controllers
 {
@@ -31,14 +31,6 @@ namespace Presentation.Controllers
             var book = _manager
                 .BookService.GetOneBookById(id, false);
 
-            //Eğer book da veri yoksa NotFound yani bulunamadı hatası veriyoruz.
-            if (book is null)
-            {
-                throw new Exception();
-
-                //return NotFound();
-
-            }
             return Ok(book);
         }
 
@@ -51,8 +43,6 @@ namespace Presentation.Controllers
             _manager.BookService.CreateOneBook(book);
             return StatusCode(201, book);
 
-            return BadRequest(); //400
-
         }
 
         [HttpPut("{id:int}")]
@@ -61,25 +51,7 @@ namespace Presentation.Controllers
             if (book is null)
                 return BadRequest();
 
-            // //check book
-            // var entity = _manager
-            //     .BookService.GetOneBookById(id, true);
-
-            // if (entity is null)
-            //     return NotFound(); //404
-
-            // //check id 
-            // if (book.Id != id)
-            //     return BadRequest(); //400
-
-            //entity.Title = book.Title;
-            //entity.Price = book.Price;
-
-            // _manager.BookService.UpdateOneBook(id,entity,true);
-            // //_manager.Save/*();*/
-
             _manager.BookService.UpdateOneBook(id, book, true);
-
 
             return Ok(book);
 
@@ -100,10 +72,6 @@ namespace Presentation.Controllers
             //check book
             var entity = _manager
                 .BookService.GetOneBookById(id, true);
-
-            if (entity is null)
-                return NotFound(); //404
-
 
             bookPatch.ApplyTo(entity);
             _manager.BookService.UpdateOneBook(id, entity, true);
