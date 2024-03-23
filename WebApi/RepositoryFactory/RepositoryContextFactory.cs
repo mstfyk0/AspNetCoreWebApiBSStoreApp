@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
+using Microsoft.Extensions.Configuration;
 using Repositories.EFCore;
+using System.IO;
 
 namespace WebApi.RepositoryFactory
 {

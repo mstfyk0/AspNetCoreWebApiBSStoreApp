@@ -3,6 +3,8 @@ using Repositories.EFCore;
 using Repositories.Contracts;
 using Services.Contracts;
 using Services;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Configuration;
 
 namespace WebApi.Extensions
 {
