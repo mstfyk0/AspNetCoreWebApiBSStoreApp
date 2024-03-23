@@ -1,14 +1,15 @@
-using Microsoft.EntityFrameworkCore;
-using Repositories.EFCore;
+
 using WebApi.Extensions;
-using Microsoft.AspNetCore.Mvc.NewtonsoftJson;
+using Presentation;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers()
+    .AddApplicationPart(typeof(AssemblyReference).Assembly)
     .AddNewtonsoftJson();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
