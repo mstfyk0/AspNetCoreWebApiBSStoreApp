@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace Entities.DataTransferObjects
 {
-    internal class BookDtoForUpdate
+    public record BookDtoForUpdate
     {
+        public int Id { get; init; }
+        public string Title { get; init; }
+        public decimal Description { get; init; }
     }
 }
