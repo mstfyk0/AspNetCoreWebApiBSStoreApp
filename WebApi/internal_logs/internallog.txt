@@ -62,3 +62,9 @@
 2024-03-25 15:16:59.2558 Info Configuration initialized.
 2024-03-25 15:17:51.5741 Info AppDomain Shutting down. LogFactory closing...
 2024-03-25 15:17:51.5882 Info LogFactory has been closed.
+2024-03-25 16:08:15.4145 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-03-25 16:08:15.4411 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-03-25 16:08:15.4547 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\mstyg\source\repos\AspNetCoreWebAPIBSStoreApp\WebApi\nlog.config
+2024-03-25 16:08:15.4547 Info Configuration initialized.
+2024-03-25 16:13:41.2388 Info AppDomain Shutting down. LogFactory closing...
+2024-03-25 16:13:41.2649 Info LogFactory has been closed.

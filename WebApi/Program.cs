@@ -24,6 +24,7 @@ builder.Services.AddControllers(config =>
     config.ReturnHttpNotAcceptable = true;
 }
 )
+    .AddCustomCsvFormatter()
     //xml formatýnda da çýktý verme imkanýný açýyoruz.
     .AddXmlDataContractSerializerFormatters()
     .AddApplicationPart(typeof(AssemblyReference).Assembly)
