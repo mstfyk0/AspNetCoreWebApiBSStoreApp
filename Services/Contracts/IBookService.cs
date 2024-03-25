@@ -10,8 +10,10 @@ namespace Services.Contracts
         BookDto GetOneBookById(int id, bool trackChanges);
         BookDto CreateOneBook(BookDtoForInsertion book);  
         void UpdateOneBook(int id ,BookDtoForUpdate bookDto , bool trackChanges);
-        void DeleteOneBook(int id,bool trackChanges); 
+        void DeleteOneBook(int id,bool trackChanges);
 
+        (BookDtoForUpdate bookDtoUpdate, Book book) GetOneBookForPatch(int id, bool trachChanges);
 
+        void SaveChangesForPatch(BookDtoForUpdate bookDtoForUpdate, Book book);
     }
 }

@@ -73,20 +73,23 @@ namespace Presentation.Controllers
         }
 
         [HttpPatch("{id:int}")]
-        public IActionResult PartialUpdateOneBook([FromRoute(Name = "id")] int id, [FromBody] JsonPatchDocument<BookDto> bookPatch)
+        public IActionResult PartialUpdateOneBook([FromRoute(Name = "id")] int id, [FromBody] JsonPatchDocument<BookDtoForUpdate> bookPatch)
         {
-            //check book
-            var entity = _manager
-                .BookService.GetOneBookById(id, true);
-
-            bookPatch.ApplyTo(entity);
-            _manager.BookService.UpdateOneBook(id, new BookDtoForUpdate()
+            if (bookPatch is null)
             {
-                Id=entity.Id,
-                Title= entity.Title,
-                Price = entity.Price
+                return BadRequest();
             }
-                , true);
+            var result = _manager.BookService.GetOneBookForPatch(id, false);
+
+            bookPatch.ApplyTo(result.bookDtoUpdate, ModelState);
+
+            TryValidateModel(result.bookDtoUpdate);
+
+            //varsayılan davranış değerini değiştiriyorız.
+            if (!ModelState.IsValid)
+                return UnprocessableEntity(ModelState);
+
+            _manager.BookService.SaveChangesForPatch(result.bookDtoUpdate, result.book);
             return NoContent();
         }
     }
