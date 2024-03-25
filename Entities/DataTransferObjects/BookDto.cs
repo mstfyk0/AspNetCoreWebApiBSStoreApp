@@ -12,6 +12,4 @@ namespace Entities.DataTransferObjects
         public String? Title { get; init; }
         public decimal Price { get; init; }
     }
-
-
 }
