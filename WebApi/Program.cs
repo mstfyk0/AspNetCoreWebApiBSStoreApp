@@ -8,6 +8,7 @@ using System;
 using System.IO;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using AutoMapper;
 
 var builder = WebApplication.CreateBuilder(args);
 

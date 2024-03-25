@@ -6,10 +6,10 @@ namespace WebApi.Utilities.AutoMapper
 {
     public class MappingProfile : Profile
     {
-        public MappingProfile()
+        public MappingProfile() 
         {
             CreateMap<BookDtoForUpdate, Book>();
-            CreateMap<Book, BookDtoForUpdate>();
+            CreateMap<Book, BookDto>();
         }
     }
 }
