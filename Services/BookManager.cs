@@ -22,15 +22,15 @@ namespace Services
             _mapper = mapper;
         }
 
-        public Book CreateOneBook(Book book)
+        public BookDto CreateOneBook(BookDtoForInsertion bookDto)
         {
 
             //if (book is null)
             //    throw new ArgumentNullException(nameof(book));
-
-            _manager.BookRepository.CreateOneBook(book);
+            var entity = _mapper.Map<Book>(bookDto);
+            _manager.BookRepository.CreateOneBook(entity);
             _manager.Save();
-            return book;
+            return _mapper.Map<BookDto>(entity);
         }
 
         public void DeleteOneBook(int id, bool trackChanges)
@@ -50,7 +50,7 @@ namespace Services
             return _mapper.Map<IEnumerable<BookDto>>(books);
         }
 
-        public Book GetOneBookById(int id, bool trackChanges)
+        public BookDto GetOneBookById(int id, bool trackChanges)
         {
 
             var book = _manager.BookRepository.GetOneBookById(id, trackChanges);
@@ -59,7 +59,8 @@ namespace Services
             if (book is null)
                 throw new BookNotFoundException(id);
 
-            return book;
+            return _mapper.Map<BookDto>(book);
+
         }
 
         public void UpdateOneBook(int id, BookDtoForUpdate bookDto, bool trackChanges)

@@ -35,10 +35,14 @@ namespace Presentation.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateOneBook([FromBody] Book book)
+        public IActionResult CreateOneBook([FromBody] BookDtoForInsertion book)
         {
             if (book is null)
                 return BadRequest(); //400
+
+            //varsayılan davranış değerini değiştiriyorız.
+            if (!ModelState.IsValid)
+                return UnprocessableEntity(ModelState);
 
             _manager.BookService.CreateOneBook(book);
             return StatusCode(201, book);
@@ -51,10 +55,12 @@ namespace Presentation.Controllers
             if (bookDto is null)
                 return BadRequest();
 
-            _manager.BookService.UpdateOneBook(id, bookDto, true);
+            //varsayılan davranış değerini değiştiriyorız.
+            if (!ModelState.IsValid)
+                return UnprocessableEntity(ModelState);
 
+            _manager.BookService.UpdateOneBook(id, bookDto, false);
             return Ok(bookDto);
-
         }
 
         [HttpDelete("{id:int}")]
@@ -67,7 +73,7 @@ namespace Presentation.Controllers
         }
 
         [HttpPatch("{id:int}")]
-        public IActionResult PartialUpdateOneBook([FromRoute(Name = "id")] int id, [FromBody] JsonPatchDocument<Book> bookPatch)
+        public IActionResult PartialUpdateOneBook([FromRoute(Name = "id")] int id, [FromBody] JsonPatchDocument<BookDto> bookPatch)
         {
             //check book
             var entity = _manager
