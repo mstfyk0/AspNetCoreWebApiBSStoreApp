@@ -3,7 +3,7 @@ using System;
 
 namespace Entities.DataTransferObjects
 {
-    public record BookDtoForUpdate
+    public record BookDto
     {
         public int Id { get; init; }
         public String? Title { get; init; }

@@ -15,7 +15,16 @@ LogManager.LoadConfiguration(String.Concat(Directory.GetCurrentDirectory(),"/nlo
 
 // Add services to the container.
 
-builder.Services.AddControllers()
+builder.Services.AddControllers(config =>
+{
+    //api sonucunun farklý formatlarda örneðin: csv, xml, vb formatlarda çýktý alýnmasýna izin verilmesi.
+    config.RespectBrowserAcceptHeader = true;
+    //Eðer desteklenmeyen bir formatta istek gelirse 406 koduyla hata vermesi saðlandý. 
+    config.ReturnHttpNotAcceptable = true;
+}
+)
+    //xml formatýnda da çýktý verme imkanýný açýyoruz.
+    .AddXmlDataContractSerializerFormatters()
     .AddApplicationPart(typeof(AssemblyReference).Assembly)
     .AddNewtonsoftJson();
 
