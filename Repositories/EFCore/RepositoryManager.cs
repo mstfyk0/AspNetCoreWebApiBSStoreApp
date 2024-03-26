@@ -1,6 +1,7 @@
 ﻿
 using Repositories.Contracts;
 using System;
+using System.Threading.Tasks;
 
 namespace Repositories.EFCore
 {
@@ -18,9 +19,9 @@ namespace Repositories.EFCore
 
         public IBookRepository BookRepository => _bookRepository.Value;
 
-        public void Save()
+        public async Task SaveAsync()
         {
-            _repositoriesContext.SaveChanges();
+            await _repositoriesContext.SaveChangesAsync();
         }
     }
 }
