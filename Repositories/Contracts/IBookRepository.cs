@@ -10,7 +10,7 @@ namespace Repositories.Contracts
 {
     public interface IBookRepository : IRepositoryBase<Book>
     {
-        Task<IEnumerable<Book>> GetAllBooksAsync(BookParameters bookParameters,bool trackchanges);
+        Task<PagedList<Book>> GetAllBooksAsync(BookParameters bookParameters,bool trackchanges);
         Task<Book> GetOneBookByIdAsync(int id,bool trackchanges);
         void CreateOneBook(Book book);
         void UpdateOneBook(Book book);

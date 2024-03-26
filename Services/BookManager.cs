@@ -7,6 +7,7 @@ using Repositories.Contracts;
 using Services.Contracts;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using static System.Reflection.Metadata.BlobBuilder;
 
 namespace Services
 {
@@ -48,10 +49,13 @@ namespace Services
             await _manager.SaveAsync();
         }
 
-        public  async Task<IEnumerable<BookDto>> GetAllBooksAsync(BookParameters bookParameters,bool trackChanges)
+        public  async Task<(IEnumerable<BookDto> books, MetaData metaData)> GetAllBooksAsync(BookParameters bookParameters,bool trackChanges)
         {
-            var books =  await _manager.BookRepository.GetAllBooksAsync(bookParameters, trackChanges);
-            return  _mapper.Map<IEnumerable<BookDto>>(books);
+
+
+            var booksWithMetaData =  await _manager.BookRepository.GetAllBooksAsync(bookParameters, trackChanges);
+            var bookDto = _mapper.Map<IEnumerable<BookDto>>(booksWithMetaData);
+            return (bookDto, booksWithMetaData.MetaData);
         }
 
         public async Task<BookDto> GetOneBookByIdAsync(int id, bool trackChanges)

@@ -6,6 +6,7 @@ using Entities.DataTransferObjects;
 using System.Threading.Tasks;
 using Presentation.ActionFilters;
 using Entities.RequestFeatures;
+using System.Text.Json;
 
 namespace Presentation.Controllers
 {
@@ -23,8 +24,10 @@ namespace Presentation.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllBooksAsync([FromQuery] BookParameters bookParameters)
         {
-            var books = await _manager.BookService.GetAllBooksAsync(bookParameters, false);
-            return Ok(books);
+            var pagedResult = await _manager.BookService.GetAllBooksAsync(bookParameters, false);
+            Response.Headers.Add("X-Pagination",
+                JsonSerializer.Serialize(pagedResult.metaData));
+            return Ok(pagedResult.books);
 
         }
         [HttpGet("{id:int}")]
