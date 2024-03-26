@@ -1,5 +1,4 @@
-﻿using Entities.Exceptions;
-using Entities.Models;
+﻿
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Services.Contracts;
@@ -9,6 +8,7 @@ using Presentation.ActionFilters;
 
 namespace Presentation.Controllers
 {
+    [ServiceFilter(typeof(LogFilterAttribute))]
     [Route("api/books")]
     [ApiController]
     public class BooksController : ControllerBase

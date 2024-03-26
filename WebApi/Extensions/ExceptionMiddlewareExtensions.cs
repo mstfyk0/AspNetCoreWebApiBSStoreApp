@@ -1,5 +1,5 @@
-﻿using Entities.ErrorModel;
-using Entities.Exceptions;
+﻿using Entities.Exceptions;
+using Entities.Models.ErrorModel;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Http;

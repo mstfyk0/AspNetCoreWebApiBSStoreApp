@@ -31,7 +31,8 @@ builder.Services.AddControllers(config =>
     .AddApplicationPart(typeof(AssemblyReference).Assembly)
     .AddNewtonsoftJson();
 
-builder.Services.AddScoped<ValidationFilterAttribute>(); //IOC
+//ServiceExtension classýnda bunu tanmladýk. bu sebeple sadece 52 satýrdaki kod yeterli oluyor.
+//builder.Services.AddScoped<ValidationFilterAttribute>(); //IOC
 
 //varsayýlan davranýþ deðerini deðiþtiriyoruz.
 builder.Services.Configure<ApiBehaviorOptions>(options =>
@@ -48,6 +49,8 @@ builder.Services.ConfigureRepositoryManager();
 builder.Services.ConfigureServiceManager();
 builder.Services.ConfigureLoggerService();
 builder.Services.AddAutoMapper(typeof(Program));
+builder.Services.ConfigureActionFilters();
+
 
 var app = builder.Build();
 var logger = app.Services.GetRequiredService<ILoggerService>();
