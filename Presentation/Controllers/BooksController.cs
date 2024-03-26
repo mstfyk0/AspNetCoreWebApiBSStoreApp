@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Services.Contracts;
 using Entities.DataTransferObjects;
 using System.Threading.Tasks;
+using Presentation.ActionFilters;
 
 namespace Presentation.Controllers
 {
@@ -35,30 +36,36 @@ namespace Presentation.Controllers
             return Ok(book);
         }
 
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
         [HttpPost]
         public async Task<IActionResult> CreateOneBookAsync([FromBody] BookDtoForInsertion book)
         {
-            if (book is null)
-                return BadRequest(); //400
+            //Action filer yapısını kurmamızla ve IoC kaydını yapmamızla bu kontrolleri action filter class larında yapıyoruz.
+            //Bu sebeple burdaki bu kontrollere ihtiyacımız kalmıyor.
+            //[ServiceFilter(typeof(ValidationFilterAttribute))]
+            //if (book is null)
+            //    return BadRequest(); //400
 
-            //varsayılan davranış değerini değiştiriyorız.
-            if (!ModelState.IsValid)
-                return UnprocessableEntity(ModelState);
+            ////varsayılan davranış değerini değiştiriyorız.
+            //if (!ModelState.IsValid)
+            //    return UnprocessableEntity(ModelState);
 
             await _manager.BookService.CreateOneBookAsync(book);
             return StatusCode(201, book);
 
         }
 
+        [ServiceFilter(typeof(ValidationFilterAttribute))]
         [HttpPut("{id:int}")]
         public async Task<IActionResult> UpdateOneBookAsync([FromRoute(Name = "id")] int id, [FromBody] BookDtoForUpdate bookDto)
         {
-            if (bookDto is null)
-                return BadRequest();
+            //[ServiceFilter(typeof(ValidationFilterAttribute))]
+            //if (bookDto is null)
+            //    return BadRequest();
 
-            //varsayılan davranış değerini değiştiriyorız.
-            if (!ModelState.IsValid)
-                return UnprocessableEntity(ModelState);
+            ////varsayılan davranış değerini değiştiriyorız.
+            //if (!ModelState.IsValid)
+            //    return UnprocessableEntity(ModelState);
 
             await _manager.BookService.UpdateOneBookAsync(id, bookDto, false);
             return Ok(bookDto);
