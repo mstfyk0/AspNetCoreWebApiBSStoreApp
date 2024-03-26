@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entities.RequestFeatures
 {
-    public  class BookParameters : RequestParameters 
+    internal class RequestParameters
     {
     }
 }
