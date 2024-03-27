@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Repositories.EFCore
 {
-    public class BookRepository : RepositoryBase<Book>, IBookRepository
+    public sealed class BookRepository : RepositoryBase<Book>, IBookRepository
     {
         public BookRepository(RepositoriesContext context) : base(context)
         {
@@ -19,7 +19,8 @@ namespace Repositories.EFCore
 
         public async Task<PagedList<Book>> GetAllBooksAsync(BookParameters bookParameters, bool trackchanges)
         { 
-            var books= await FindByCondition(b=>b.Price>= bookParameters.minPrice && b.Price <= bookParameters.maxPrice ,trackchanges)
+            var books= await FindAll(trackchanges)
+                .FilterBooks(bookParameters.minPrice, bookParameters.maxPrice)
             .OrderBy(b => b.Id)
             .ToListAsync();
 
