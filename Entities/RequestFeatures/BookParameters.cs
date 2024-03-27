@@ -14,5 +14,10 @@ namespace Entities.RequestFeatures
         public bool ValidPriceRange => maxPrice > minPrice;
 
         public String? SearchTerm { get; set; }
+
+        public BookParameters()
+        {
+            OrderBy = "id";
+        }
     }
 }
