@@ -7,6 +7,7 @@ using Repositories.Contracts;
 using Services.Contracts;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using static Entities.Exceptions.BadRequestException;
 using static System.Reflection.Metadata.BlobBuilder;
 
 namespace Services
@@ -51,7 +52,8 @@ namespace Services
 
         public  async Task<(IEnumerable<BookDto> books, MetaData metaData)> GetAllBooksAsync(BookParameters bookParameters,bool trackChanges)
         {
-
+            if (!bookParameters.ValidPriceRange)
+                throw new PriceOutOfRangeBadRequestException();
 
             var booksWithMetaData =  await _manager.BookRepository.GetAllBooksAsync(bookParameters, trackChanges);
             var bookDto = _mapper.Map<IEnumerable<BookDto>>(booksWithMetaData);
