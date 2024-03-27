@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace Entities.Models.LinkModels
 {
     public class Link
@@ -13,7 +8,7 @@ namespace Entities.Models.LinkModels
         public string? Method { get; set; }
 
         public Link()
-        {
+        {   
             
         }
         public Link(string? href, string? rel, string? method)
@@ -22,15 +17,5 @@ namespace Entities.Models.LinkModels
             Rel = rel;
             Method = method;
         }
-    }
-    public class LinkResourceBase
-    {
-
-        public LinkResourceBase()
-        {
-            
-        }
-
-        public List<Link> Links { get; set; } = new List<Link>();
     }
 }
