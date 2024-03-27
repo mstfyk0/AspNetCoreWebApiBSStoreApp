@@ -6,6 +6,8 @@ using Services;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Presentation.ActionFilters;
+using Services.Contracts;
+using Entities.DataTransferObjects;
 
 namespace WebApi.Extensions
 {
@@ -43,6 +45,12 @@ namespace WebApi.Extensions
                 .WithExposedHeaders("X-Pagination")
                 );
             });
+
+        }
+        public static void ConfigureDataShaper(this IServiceCollection services)
+        {
+
+            services.AddScoped<IDataShaper<BookDto>, DataShaper<BookDto>>();
 
         }
 
