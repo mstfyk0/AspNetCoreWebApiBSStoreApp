@@ -9,6 +9,7 @@ using System.IO;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Services;
 var builder = WebApplication.CreateBuilder(args);
 
 LogManager.LoadConfiguration(String.Concat(Directory.GetCurrentDirectory(),"/nlog.config"));
@@ -26,8 +27,8 @@ builder.Services.AddControllers(config =>
     .AddCustomCsvFormatter()
     //xml formatýnda da çýktý verme imkanýný açýyoruz.
     .AddXmlDataContractSerializerFormatters()
-    .AddApplicationPart(typeof(AssemblyReference).Assembly)
-    .AddNewtonsoftJson();
+    .AddApplicationPart(typeof(AssemblyReference).Assembly);
+    //.AddNewtonsoftJson();
 
 //ServiceExtension classýnda bunu tanmladýk. bu sebeple sadece 52 satýrdaki kod yeterli oluyor.
 //builder.Services.AddScoped<ValidationFilterAttribute>(); //IOC
@@ -51,7 +52,7 @@ builder.Services.ConfigureActionFilters();
 builder.Services.ConfigureCors();
 builder.Services.ConfigureDataShaper();
 builder.Services.AddCustomMediaTypes();
-
+builder.Services.AddScoped<IBookLinks, BookLinks>();
 
 var app = builder.Build();
 var logger = app.Services.GetRequiredService<ILoggerService>();

@@ -12,10 +12,10 @@ namespace Services
         public ServiceManager(IRepositoryManager repositoryManager
             ,ILoggerService loggerService
             ,IMapper mapper 
-            ,IDataShaper<BookDto> shaper
+            ,IBookLinks bookLinks
             )
         {
-            _bookService = new Lazy<IBookService>(() => new BookManager(repositoryManager, loggerService, mapper, shaper));
+            _bookService = new Lazy<IBookService>(() => new BookManager(repositoryManager, loggerService, mapper, bookLinks));
         }
         public IBookService BookService => _bookService.Value;
     }

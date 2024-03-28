@@ -20,11 +20,11 @@ namespace Presentation.ActionFilters
                 return;
             }
             var mediaType = context.HttpContext
-                .Response
+                .Request
                 .Headers["Accept"]
                 .FirstOrDefault();
 
-            if (MediaTypeHeaderValue.TryParse(mediaType, out MediaTypeHeaderValue? mediaTypeHeaderValue) )
+            if (!MediaTypeHeaderValue.TryParse(mediaType, out MediaTypeHeaderValue? mediaTypeHeaderValue) )
             {
                 context.Result = new BadRequestObjectResult($"Media type not present." +
                     $"Please add Accept header with required media type.");
@@ -32,7 +32,7 @@ namespace Presentation.ActionFilters
                 return;
 
             }
-            context.HttpContext.Items.Add("AcceptHeaderMediaType", mediaTypeHeaderValue)
+            context.HttpContext.Items.Add("AcceptHeaderMediaType", mediaTypeHeaderValue);
            
         }
     }
