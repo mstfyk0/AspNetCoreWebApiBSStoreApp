@@ -23,7 +23,7 @@ namespace Presentation.Controllers
         }
 
         [HttpHead]
-        [HttpGet]
+        [HttpGet(Name = "GetAllBooksAsync")]
         [ServiceFilter(typeof(ValidateMediaTypeAttribute))]
         public async Task<IActionResult> GetAllBooksAsync([FromQuery] BookParameters bookParameters)
          {
@@ -54,7 +54,7 @@ namespace Presentation.Controllers
         }
 
         [ServiceFilter(typeof(ValidationFilterAttribute))]
-        [HttpPost]
+        [HttpPost(Name = "CreateOneBookAsync")]  
         public async Task<IActionResult> CreateOneBookAsync([FromBody] BookDtoForInsertion book)
         {
             //Action filer yapısını kurmamızla ve IoC kaydını yapmamızla bu kontrolleri action filter class larında yapıyoruz.
