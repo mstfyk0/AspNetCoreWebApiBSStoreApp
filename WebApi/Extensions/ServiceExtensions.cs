@@ -6,12 +6,10 @@ using Services;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Presentation.ActionFilters;
-using Services.Contracts;
 using Entities.DataTransferObjects;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc.Formatters;
-using Microsoft.IdentityModel.Tokens;
 
 namespace WebApi.Extensions
 {
@@ -35,6 +33,8 @@ namespace WebApi.Extensions
         {
             services.AddScoped<ValidationFilterAttribute>();
             services.AddSingleton<LogFilterAttribute>();
+            services.AddScoped<ValidateMediaTypeAttribute>();   
+
 
         }
 
