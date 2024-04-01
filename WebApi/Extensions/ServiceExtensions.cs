@@ -10,7 +10,9 @@ using Entities.DataTransferObjects;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc.Formatters;
-using Microsoft.EntityFrameworkCore.Query.Internal;
+using Microsoft.AspNetCore.Mvc.Versioning;
+using Presentation.Controllers;
+using Marvin.Cache.Headers;
 
 namespace WebApi.Extensions
 {
@@ -97,11 +99,35 @@ namespace WebApi.Extensions
             {
                 opt.ReportApiVersions = true;
                 opt.AssumeDefaultVersionWhenUnspecified=true;
-                opt.DefaultApiVersion = new ApiVersion(1, 0);    
+                opt.DefaultApiVersion = new ApiVersion(1, 0);
+                opt.ApiVersionReader = new HeaderApiVersionReader("api-version");
+                //Controllerda bulunan api bilgisinin Conventions yapısı ile servicleri tanımladığımız yerde kullanabiliyoruz.
+                opt.Conventions.Controller<BooksController>()
+                    .HasApiVersion(new ApiVersion(1, 0));
+                //Controllerda bulunan api bilgisinin Conventions yapısı ile servicleri tanımladığımız yerde kullanabiliyoruz. Deprecate edilen api versiyonuda aynı şekilde yapabiliyoruz. HasDeprecatedApiVersion kullanrak.
+                opt.Conventions.Controller<BooksV2Controller>()
+                   .HasDeprecatedApiVersion(new ApiVersion(2, 0));
             }
             );
         }
 
+        //Api caching mekanizmasını entegre ediyoruz.
+        public static void ConfigureResponseCaching(this IServiceCollection services) =>
 
+            services.AddResponseCaching();
+
+        public static void  ConfigureHttpCacheHeaders(this IServiceCollection services) =>
+            services.AddHttpCacheHeaders(expirationOpt =>
+            {
+
+                expirationOpt.MaxAge = 90;
+                expirationOpt.CacheLocation = CacheLocation.Public;
+            },
+                validationOPt =>
+                {
+                    validationOPt.MustRevalidate = false;
+                }
+
+            );
     }
 }

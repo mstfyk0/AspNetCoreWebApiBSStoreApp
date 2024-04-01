@@ -2,6 +2,7 @@
 using Entities.Models;
 using Entities.Models.LinkModels;
 using Entities.RequestFeatures;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Services.Contracts
@@ -17,5 +18,6 @@ namespace Services.Contracts
         Task<(BookDtoForUpdate bookDtoUpdate, Book book)> GetOneBookForPatchAsync(int id, bool trachChanges);
 
         Task SaveChangesForPatchAsync(BookDtoForUpdate bookDtoForUpdate, Book book);
+        Task<List<Book>> GetAllBooksAsync(bool trackChanges);
     }
 }

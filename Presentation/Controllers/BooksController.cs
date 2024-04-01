@@ -7,12 +7,22 @@ using System.Threading.Tasks;
 using Presentation.ActionFilters;
 using Entities.RequestFeatures;
 using System.Text.Json;
+using Marvin.Cache.Headers;
 
 namespace Presentation.Controllers
 {
+    //versiyon tanımlamayı controlün başına attribute olarak yazılabilir  [ApiVersion("1.0")] fakat bunu Conventsions yapısı ile de yazabiliriz.
+    //[ApiVersion("1.0")]
     [ServiceFilter(typeof(LogFilterAttribute))]
+    //Versiyonlamayı link üzerinden de verebiliriz. 
+    //[Route("api/{v:apiversion}/books")]
+    //Header üzerinde nde 
     [Route("api/books")]
     [ApiController]
+    //Cache profile kontrollera tanımlama.
+    //[ResponseCache(CacheProfileName ="5mins")]
+    //Service extensionda HTTP cache response ile merkezi yerden kotnrol edilmesi sağlandığı için bu tanımlara ihtiyaç yok.
+    //[HttpCacheExpiration(CacheLocation = CacheLocation.Public , MaxAge =80)]
     public class BooksController : ControllerBase
     {
         private readonly IServiceManager _manager;
@@ -25,6 +35,7 @@ namespace Presentation.Controllers
         [HttpHead]
         [HttpGet(Name = "GetAllBooksAsync")]
         [ServiceFilter(typeof(ValidateMediaTypeAttribute))]
+        //[ResponseCache(Duration =60)]
         public async Task<IActionResult> GetAllBooksAsync([FromQuery] BookParameters bookParameters)
          {
             var linkParameter = new LinkParameters()

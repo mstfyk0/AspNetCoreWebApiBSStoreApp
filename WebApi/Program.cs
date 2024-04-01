@@ -22,6 +22,8 @@ builder.Services.AddControllers(config =>
     config.RespectBrowserAcceptHeader = true;
     //Eðer desteklenmeyen bir formatta istek gelirse 406 koduyla hata vermesi saðlandý. 
     config.ReturnHttpNotAcceptable = true;
+    //cache profile özelliðini entegre etme
+    config.CacheProfiles.Add("5mins",new CacheProfile { Duration=300});
 }
 )
     .AddCustomCsvFormatter()
@@ -54,6 +56,9 @@ builder.Services.ConfigureDataShaper();
 builder.Services.AddCustomMediaTypes();
 builder.Services.AddScoped<IBookLinks, BookLinks>();
 builder.Services.ConfigureVersioning();
+//response caching yapýsýn hazýrlandý ve IoC kaydý yapýldý.
+builder.Services.ConfigureResponseCaching();
+builder.Services.ConfigureHttpCacheHeaders();
 
 var app = builder.Build();
 var logger = app.Services.GetRequiredService<ILoggerService>();
@@ -74,6 +79,9 @@ if (app.Environment.IsProduction())
 app.UseHttpsRedirection();
 
 app.UseCors("CorsPolicy");
+//service kaydýný cors dan sonra yapmak tavsiye ediliyor.
+app.UseResponseCaching();
+app.UseHttpCacheHeaders();
 
 app.UseAuthorization();
 
