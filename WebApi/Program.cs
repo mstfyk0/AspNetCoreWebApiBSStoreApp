@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Services;
+using AspNetCoreRateLimit;
 var builder = WebApplication.CreateBuilder(args);
 
 LogManager.LoadConfiguration(String.Concat(Directory.GetCurrentDirectory(),"/nlog.config"));
@@ -59,6 +60,9 @@ builder.Services.ConfigureVersioning();
 //response caching yapýsýn hazýrlandý ve IoC kaydý yapýldý.
 builder.Services.ConfigureResponseCaching();
 builder.Services.ConfigureHttpCacheHeaders();
+builder.Services.AddMemoryCache();
+builder.Services.ConfigureRateLimitingOptions();
+builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
 var logger = app.Services.GetRequiredService<ILoggerService>();
@@ -78,6 +82,7 @@ if (app.Environment.IsProduction())
 
 app.UseHttpsRedirection();
 
+app.UseIpRateLimiting();
 app.UseCors("CorsPolicy");
 //service kaydýný cors dan sonra yapmak tavsiye ediliyor.
 app.UseResponseCaching();
