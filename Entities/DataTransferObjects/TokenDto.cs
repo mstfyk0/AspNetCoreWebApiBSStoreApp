@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Entities.DataTransferObjects
 {
-    internal class TokenDto
+    public record TokenDto
     {
+        public String? AccessToken { get; init; }
+        public String? RefreshToken { get; init; }
+
     }
 }
