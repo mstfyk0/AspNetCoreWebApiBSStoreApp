@@ -8,6 +8,7 @@ using Presentation.ActionFilters;
 using Entities.RequestFeatures;
 using System.Text.Json;
 using Marvin.Cache.Headers;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Presentation.Controllers
 {
@@ -31,7 +32,8 @@ namespace Presentation.Controllers
         {
             _manager = manager;
         }
-
+        //KUllanıcı girişi olmadan bu method kullanılmaz özelliği kazandırmış oluyoruz. [Authorize] 
+        [Authorize]
         [HttpHead]
         [HttpGet(Name = "GetAllBooksAsync")]
         [ServiceFilter(typeof(ValidateMediaTypeAttribute))]

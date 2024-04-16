@@ -64,8 +64,12 @@ builder.Services.AddMemoryCache();
 builder.Services.ConfigureRateLimitingOptions();
 builder.Services.AddHttpContextAccessor();
 
-builder.Services.AddAuthentication();
 builder.Services.ConfigureIdentity();
+//Jwt bölümü
+//Eklenilen bir özelliðin program açýlýnca direk entegre olmasýný saðlanmazsa program o methodlarýn ve özelliklerin var olup olmadýðýna dair bir bilgisi olmaz. Bu sebeple Jwt entegrasyonun gerçekleþtirip program cs dosyasýna service kaydýný yapmazsan controllerda [Authorize] diye kullanýlan methodlar için çalýþma gerçekleþmicektir. 
+//Jwt eklendi service extension classýna kaydý yapýldý ama program cse eklenmediðinde 404 not found diye hata alýyoruz.
+builder.Services.ConfigureJWT(builder.Configuration);
+//builder.Services.ConfigureJWT();
 
 var app = builder.Build();
 var logger = app.Services.GetRequiredService<ILoggerService>();

@@ -282,3 +282,95 @@
 2024-04-02 10:14:09.8715 Info Configuration initialized.
 2024-04-02 10:14:11.1748 Info AppDomain Shutting down. LogFactory closing...
 2024-04-02 10:14:11.1748 Info LogFactory has been closed.
+2024-04-02 10:54:30.1407 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-04-02 10:54:30.1699 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-04-02 10:54:30.1873 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\mstyg\source\repos\AspNetCoreWebAPIBSStoreApp\WebApi\nlog.config
+2024-04-02 10:54:30.2041 Info Configuration initialized.
+2024-04-02 12:31:23.1025 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-04-02 12:31:23.1336 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-04-02 12:31:23.1570 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\mstyg\source\repos\AspNetCoreWebAPIBSStoreApp\WebApi\nlog.config
+2024-04-02 12:31:23.1754 Info Configuration initialized.
+2024-04-16 14:29:32.4002 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-04-16 14:29:32.4479 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-04-16 14:29:32.4644 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\mstyg\source\repos\AspNetCoreWebAPIBSStoreApp\WebApi\nlog.config
+2024-04-16 14:29:32.4815 Info Configuration initialized.
+2024-04-16 14:32:10.3681 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-04-16 14:32:10.4020 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-04-16 14:32:10.4236 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\mstyg\source\repos\AspNetCoreWebAPIBSStoreApp\WebApi\nlog.config
+2024-04-16 14:32:10.4391 Info Configuration initialized.
+2024-04-16 14:33:39.9081 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-04-16 14:33:39.9339 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-04-16 14:33:39.9487 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\mstyg\source\repos\AspNetCoreWebAPIBSStoreApp\WebApi\nlog.config
+2024-04-16 14:33:39.9623 Info Configuration initialized.
+2024-04-16 14:34:12.7834 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-04-16 14:34:12.8135 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-04-16 14:34:12.8329 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\mstyg\source\repos\AspNetCoreWebAPIBSStoreApp\WebApi\nlog.config
+2024-04-16 14:34:12.8500 Info Configuration initialized.
+2024-04-16 14:35:17.7189 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-04-16 14:35:17.7409 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-04-16 14:35:17.7564 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\mstyg\source\repos\AspNetCoreWebAPIBSStoreApp\WebApi\nlog.config
+2024-04-16 14:35:17.7694 Info Configuration initialized.
+2024-04-16 14:39:17.8537 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-04-16 14:39:17.8902 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-04-16 14:39:17.9196 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\mstyg\source\repos\AspNetCoreWebAPIBSStoreApp\WebApi\nlog.config
+2024-04-16 14:39:17.9383 Info Configuration initialized.
+2024-04-16 14:40:10.9165 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-04-16 14:40:10.9407 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-04-16 14:40:10.9545 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\mstyg\source\repos\AspNetCoreWebAPIBSStoreApp\WebApi\nlog.config
+2024-04-16 14:40:10.9545 Info Configuration initialized.
+2024-04-16 14:41:31.5394 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-04-16 14:41:31.5698 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-04-16 14:41:31.5926 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\mstyg\source\repos\AspNetCoreWebAPIBSStoreApp\WebApi\nlog.config
+2024-04-16 14:41:31.6155 Info Configuration initialized.
+2024-04-16 14:42:34.6943 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-04-16 14:42:34.7215 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-04-16 14:42:34.7386 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\mstyg\source\repos\AspNetCoreWebAPIBSStoreApp\WebApi\nlog.config
+2024-04-16 14:42:34.7571 Info Configuration initialized.
+2024-04-16 14:42:57.2354 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-04-16 14:42:57.2681 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-04-16 14:42:57.2875 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\mstyg\source\repos\AspNetCoreWebAPIBSStoreApp\WebApi\nlog.config
+2024-04-16 14:42:57.3034 Info Configuration initialized.
+2024-04-16 14:43:17.8644 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-04-16 14:43:17.8891 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-04-16 14:43:17.9028 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\mstyg\source\repos\AspNetCoreWebAPIBSStoreApp\WebApi\nlog.config
+2024-04-16 14:43:17.9149 Info Configuration initialized.
+2024-04-16 14:44:53.8493 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-04-16 14:44:53.9174 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-04-16 14:44:53.9324 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\mstyg\source\repos\AspNetCoreWebAPIBSStoreApp\WebApi\nlog.config
+2024-04-16 14:44:53.9451 Info Configuration initialized.
+2024-04-16 14:45:16.3828 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-04-16 14:45:16.4086 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-04-16 14:45:16.4277 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\mstyg\source\repos\AspNetCoreWebAPIBSStoreApp\WebApi\nlog.config
+2024-04-16 14:45:16.4401 Info Configuration initialized.
+2024-04-16 14:48:46.4853 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-04-16 14:48:46.5179 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-04-16 14:48:46.5336 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\mstyg\source\repos\AspNetCoreWebAPIBSStoreApp\WebApi\nlog.config
+2024-04-16 14:48:46.5474 Info Configuration initialized.
+2024-04-16 14:49:32.5469 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-04-16 14:49:32.5716 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-04-16 14:49:32.5868 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\mstyg\source\repos\AspNetCoreWebAPIBSStoreApp\WebApi\nlog.config
+2024-04-16 14:49:32.6031 Info Configuration initialized.
+2024-04-16 14:50:24.5864 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-04-16 14:50:24.6127 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-04-16 14:50:24.6282 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\mstyg\source\repos\AspNetCoreWebAPIBSStoreApp\WebApi\nlog.config
+2024-04-16 14:50:24.6446 Info Configuration initialized.
+2024-04-16 14:53:07.3531 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-04-16 14:53:07.3827 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-04-16 14:53:07.4007 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\mstyg\source\repos\AspNetCoreWebAPIBSStoreApp\WebApi\nlog.config
+2024-04-16 14:53:07.4167 Info Configuration initialized.
+2024-04-16 14:53:41.0879 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-04-16 14:53:41.1165 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-04-16 14:53:41.1396 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\mstyg\source\repos\AspNetCoreWebAPIBSStoreApp\WebApi\nlog.config
+2024-04-16 14:53:41.1578 Info Configuration initialized.
+2024-04-16 14:54:07.7509 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-04-16 14:54:07.7886 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-04-16 14:54:07.8199 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\mstyg\source\repos\AspNetCoreWebAPIBSStoreApp\WebApi\nlog.config
+2024-04-16 14:54:07.8339 Info Configuration initialized.
+2024-04-16 14:54:20.6241 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-04-16 14:54:20.6557 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-04-16 14:54:20.6776 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\mstyg\source\repos\AspNetCoreWebAPIBSStoreApp\WebApi\nlog.config
+2024-04-16 14:54:20.6956 Info Configuration initialized.
+2024-04-16 14:57:01.0598 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-04-16 14:57:01.0867 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.8.2366. Product version: 5.2.8+f586f1341c46fa38aaaff4c641e7f0fa7e813943. GlobalAssemblyCache: False
+2024-04-16 14:57:01.1104 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\mstyg\source\repos\AspNetCoreWebAPIBSStoreApp\WebApi\nlog.config
+2024-04-16 14:57:01.1275 Info Configuration initialized.

@@ -17,6 +17,9 @@ using System.Collections.Generic;
 using AspNetCoreRateLimit;
 using Microsoft.AspNetCore.Identity;
 using Entities.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace WebApi.Extensions
 {
@@ -172,5 +175,37 @@ namespace WebApi.Extensions
                 .AddEntityFrameworkStores<RepositoriesContext>()
                 .AddDefaultTokenProviders();
         }
+        //Jwt bölümü
+        public static void ConfigureJWT(this IServiceCollection services, IConfiguration configuration)
+        {
+            var jwtSetting = configuration.GetSection("JwtSettings");
+            var secretKey = jwtSetting["secretKey"];
+
+            services.AddAuthentication(opt =>
+            {
+                //Shema tanımlanmayınca ve controller methodunda authentication kullanıyorsan o methodu çağırdığında 404 not found hatası alırsın.
+                //Burada varsayılan bir şemayı kullandırtıyor. Buna göre de appsetttings ayarlıyabiliyoruz.
+                //opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                // Authentication şemasının eklenmesi için bu   opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme; configurasyon işe yarıyor. 
+                opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }
+
+            ).AddJwtBearer(options =>
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    //  jwtsettings["buraya girilen parametre adı hatalı girildiyse  "String reference not set to an instance of a String. (Parameter 's')" şeklinde hata verir."]
+                    ValidIssuer = jwtSetting["validIssuer"],
+                    ValidAudience = jwtSetting["validAudience"],
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey)),
+                }
+            );
+
+        }
+        //Jwt bölümü Son
+
     }
 }
