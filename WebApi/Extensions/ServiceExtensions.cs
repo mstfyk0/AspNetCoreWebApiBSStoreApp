@@ -144,7 +144,7 @@ namespace WebApi.Extensions
                 new RateLimitRule()
                 {
                     Endpoint="*",
-                    Limit=3,
+                    Limit=60,
                     Period="1m"
 
                 }
@@ -185,7 +185,8 @@ namespace WebApi.Extensions
             {
                 //Shema tanımlanmayınca ve controller methodunda authentication kullanıyorsan o methodu çağırdığında 404 not found hatası alırsın.
                 //Burada varsayılan bir şemayı kullandırtıyor. Buna göre de appsetttings ayarlıyabiliyoruz.
-                //opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                //Bu kod ile başka methodlar da authentication çalıştırdığımızda belirli bir şemayı kabul etmesini sağlıyoruz. BU olmaz ise 401 unauthorize dönüyor methotlar.
+                opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 // Authentication şemasının eklenmesi için bu   opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme; configurasyon işe yarıyor. 
                 opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             }

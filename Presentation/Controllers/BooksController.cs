@@ -56,6 +56,8 @@ namespace Presentation.Controllers
                 Ok(result.linkResponse.ShapedEntities);
 
         }
+
+        [Authorize]
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetOneBookAsync([FromRoute(Name = "id")] int id)
         {
@@ -66,6 +68,7 @@ namespace Presentation.Controllers
             return Ok(book);
         }
 
+        [Authorize(Roles = "Admin, Editpor ")]
         [ServiceFilter(typeof(ValidationFilterAttribute))]
         [HttpPost(Name = "CreateOneBookAsync")]  
         public async Task<IActionResult> CreateOneBookAsync([FromBody] BookDtoForInsertion book)
@@ -85,6 +88,7 @@ namespace Presentation.Controllers
 
         }
 
+        [Authorize(Roles = "Admin, Editpor ")]
         [ServiceFilter(typeof(ValidationFilterAttribute))]
         [HttpPut("{id:int}")]
         public async Task<IActionResult> UpdateOneBookAsync([FromRoute(Name = "id")] int id, [FromBody] BookDtoForUpdate bookDto)
@@ -101,6 +105,7 @@ namespace Presentation.Controllers
             return Ok(bookDto);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> DeleteOneBookAsync([FromRoute(Name = "id")] int id)
         {
