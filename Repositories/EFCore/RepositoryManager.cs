@@ -16,7 +16,7 @@ namespace Repositories.EFCore
         {
             _repositoriesContext = repositoriesContext;
             _bookRepository = new Lazy<IBookRepository>(new BookRepository(_repositoriesContext));
-            _categoryRepository = new Lazy<ICategoryRepository>(new CategoryRepository(_repositoriesContext);
+            _categoryRepository = new Lazy<ICategoryRepository>(new CategoryRepository(_repositoriesContext));
         }
 
         public IBookRepository BookRepository => _bookRepository.Value;
