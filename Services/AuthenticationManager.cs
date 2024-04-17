@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Entities.DataTransferObjects;
+using Entities.Exceptions;
 using Entities.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
@@ -48,7 +49,7 @@ namespace Services
                      _user.RefreshTokenExpireTime= DateTime.Now.AddDays(1);
             }
 
-            _userManager.UpdateAsync(_user);
+            await _userManager.UpdateAsync(_user);
 
                 
             
@@ -183,7 +184,8 @@ namespace Services
 
 
             if (user is null || user.RefreshToken != tokenDto.RefreshToken
-                 || user.RefreshTokenExpireTime <= DateTime.Now)
+                 || user.RefreshTokenExpireTime <= DateTime.Now
+                 )
             {
                 throw new RefrestTokenBadRequestException();
             }

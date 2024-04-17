@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace Entities.Exceptions
 {
-    internal class RefrestTokenBadRequestException
+    public class RefrestTokenBadRequestException : BadRequestException
     {
+        public RefrestTokenBadRequestException() : base($"Invalid client request. The tokenDto  has some invalid values. ")
+        {
+        }
     }
 }
