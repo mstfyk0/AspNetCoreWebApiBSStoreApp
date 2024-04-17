@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Entities.Models
 {
-    internal class Category
+    public class Category
     {
+        public int CategoryId { get; set; }
+        public String?  CategroyName { get; set; }
     }
 }
