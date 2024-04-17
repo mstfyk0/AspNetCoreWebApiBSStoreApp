@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WebApi.Migrations
 {
-    public partial class CreatingIdentityTables : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -30,6 +30,8 @@ namespace WebApi.Migrations
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    RefreshToken = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    RefreshTokenExpireTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -51,17 +53,16 @@ namespace WebApi.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Books",
+                name: "Categories",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    CategoryId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
+                    CategoryName = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Books", x => x.Id);
+                    table.PrimaryKey("PK_Categories", x => x.CategoryId);
                 });
 
             migrationBuilder.CreateTable(
@@ -170,20 +171,61 @@ namespace WebApi.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Books",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    CategoryId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Books", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Books_Categories_CategoryId",
+                        column: x => x.CategoryId,
+                        principalTable: "Categories",
+                        principalColumn: "CategoryId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.InsertData(
-                table: "Books",
-                columns: new[] { "Id", "Price", "Title" },
-                values: new object[] { 1, 100m, "Hacivat ile karagöz" });
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[,]
+                {
+                    { "5de89108-9145-4d9e-ac42-c8202d0fc7d6", "4b0536f7-8471-4f7c-a721-2ecdeeb1dc3d", "User", "USER" },
+                    { "80f59229-a24b-48aa-91c3-79134e4b3c4c", "f669fca5-b682-4424-b5bd-085437ad4f7d", "Editpor", "EDITOR" },
+                    { "ea8f944f-f700-48d0-a1bc-babb5e932960", "85343603-f4c3-4c19-85cf-f583a5ce45bf", "Admin", "ADMIN" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Categories",
+                columns: new[] { "CategoryId", "CategoryName" },
+                values: new object[,]
+                {
+                    { 1, "Book" },
+                    { 2, "Computer science" },
+                    { 3, "Data science" }
+                });
 
             migrationBuilder.InsertData(
                 table: "Books",
-                columns: new[] { "Id", "Price", "Title" },
-                values: new object[] { 2, 67m, "Sherlock Holmes" });
+                columns: new[] { "Id", "CategoryId", "Price", "Title" },
+                values: new object[] { 1, 1, 100m, "Hacivat ile karagöz" });
 
             migrationBuilder.InsertData(
                 table: "Books",
-                columns: new[] { "Id", "Price", "Title" },
-                values: new object[] { 3, 1689m, "Kuantum fiziğini öğreniyoruz." });
+                columns: new[] { "Id", "CategoryId", "Price", "Title" },
+                values: new object[] { 2, 2, 67m, "Sherlock Holmes" });
+
+            migrationBuilder.InsertData(
+                table: "Books",
+                columns: new[] { "Id", "CategoryId", "Price", "Title" },
+                values: new object[] { 3, 3, 1689m, "Kuantum fiziğini öğreniyoruz." });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -223,6 +265,11 @@ namespace WebApi.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Books_CategoryId",
+                table: "Books",
+                column: "CategoryId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -250,6 +297,9 @@ namespace WebApi.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Categories");
         }
     }
 }

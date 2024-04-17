@@ -10,9 +10,9 @@ namespace Repositories.EFCore.Config
         {
             builder
                 .HasData(
-                    new Book { Id = 1, Title = "Hacivat ile karagöz", Price = 100 },
-                    new Book { Id = 2, Title = "Sherlock Holmes", Price = 67 },
-                    new Book { Id = 3, Title = "Kuantum fiziğini öğreniyoruz.", Price = 1689 });
+                    new Book { Id = 1, Title = "Hacivat ile karagöz", Price = 100, CategoryId = 1 },
+                    new Book { Id = 2, Title = "Sherlock Holmes", Price = 67, CategoryId = 2 },
+                    new Book { Id = 3, Title = "Kuantum fiziğini öğreniyoruz.", Price = 1689, CategoryId = 3 });
         }
     }
 }

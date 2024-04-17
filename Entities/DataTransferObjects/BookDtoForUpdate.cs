@@ -9,6 +9,4 @@ namespace Entities.DataTransferObjects
         [Required]
         public int Id { get; init; }
     }
-
-
 }
