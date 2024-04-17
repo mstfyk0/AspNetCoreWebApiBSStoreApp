@@ -20,6 +20,7 @@ using Entities.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Microsoft.OpenApi.Models;
 
 namespace WebApi.Extensions
 {
@@ -208,5 +209,43 @@ namespace WebApi.Extensions
         }
         //Jwt bölümü Son
 
+        public static void ConfigureSwagger (this IServiceCollection services)
+        {
+
+            services.AddSwaggerGen(
+
+                s =>
+                {
+                    s.SwaggerDoc("v1", new OpenApiInfo { Title = "Btk Akademi", Version = "v1" });
+                    s.SwaggerDoc("v2", new OpenApiInfo { Title = "Btk Akademi Version 2", Version = "v2" });
+
+                    s.AddSecurityDefinition("Bearer"
+                        , new OpenApiSecurityScheme()
+                        {
+                            In = ParameterLocation.Header,
+                            Description = "Place to add JWT with Bearer",
+                            Name = "Authorization",
+                            Type = SecuritySchemeType.ApiKey,
+                            Scheme = "Bearer"
+                        });
+
+                    s.AddSecurityRequirement(new OpenApiSecurityRequirement()
+                    {
+                        {
+                            new OpenApiSecurityScheme
+                            {
+                                Reference= new OpenApiReference
+                                {
+
+                                    Type=ReferenceType.SecurityScheme,
+                                    Id="Bearer"
+                                }
+                                ,Name="Bearer"
+
+                            },new List<string >()
+                        }
+                    });
+                });
+        }
     }
 }

@@ -14,6 +14,7 @@ namespace Presentation.Controllers
     //Versiyonlamanın link üzerinden olması için ayarlama
     //[Route("api/{v:apiversion}/books")]
     [Route("api/books")]
+    [ApiExplorerSettings(GroupName = "v2")]
     public class BooksV2Controller : ControllerBase
     {
         private readonly IServiceManager _manager;

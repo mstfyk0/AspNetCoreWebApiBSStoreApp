@@ -20,6 +20,8 @@ namespace Presentation.Controllers
     //Header üzerinde nde 
     [Route("api/books")]
     [ApiController]
+    [ApiExplorerSettings(GroupName = "v1")]
+
     //Cache profile kontrollera tanımlama.
     //[ResponseCache(CacheProfileName ="5mins")]
     //Service extensionda HTTP cache response ile merkezi yerden kotnrol edilmesi sağlandığı için bu tanımlara ihtiyaç yok.
