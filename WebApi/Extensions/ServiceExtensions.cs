@@ -21,6 +21,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.OpenApi.Models;
+using System;
 
 namespace WebApi.Extensions
 {
@@ -216,7 +217,23 @@ namespace WebApi.Extensions
 
                 s =>
                 {
-                    s.SwaggerDoc("v1", new OpenApiInfo { Title = "Btk Akademi", Version = "v1" });
+                    s.SwaggerDoc("v1", new OpenApiInfo { Title = "Btk Akademi", Version = "v1"
+                    
+                        ,Description="BTK Akademi ASP.Net Core Web API"
+                        ,TermsOfService = new Uri("https://www.btkakademi.gov.tr")
+                        ,Contact = new OpenApiContact()
+                        {
+                            Name="Mustafa Yiğit KARAKOCA"
+                            ,Email= "ygt99krk@gmail.com"
+                            ,Url= new Uri("https://github.com/mstfyk0")
+
+                        }
+
+
+                    }
+                    
+                    
+                    );
                     s.SwaggerDoc("v2", new OpenApiInfo { Title = "Btk Akademi Version 2", Version = "v2" });
 
                     s.AddSecurityDefinition("Bearer"
