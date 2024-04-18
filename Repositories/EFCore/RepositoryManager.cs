@@ -9,19 +9,19 @@ namespace Repositories.EFCore
     {
 
         private readonly RepositoriesContext _repositoriesContext;
-        private readonly Lazy<IBookRepository> _bookRepository;
-        private readonly Lazy<ICategoryRepository> _categoryRepository;
+        private readonly IBookRepository _bookRepository;
+        private readonly ICategoryRepository _categoryRepository;
 
-        public RepositoryManager(RepositoriesContext repositoriesContext )
+        public RepositoryManager(RepositoriesContext repositoriesContext, IBookRepository bookRepository, ICategoryRepository categoryRepository)
         {
             _repositoriesContext = repositoriesContext;
-            _bookRepository = new Lazy<IBookRepository>(new BookRepository(_repositoriesContext));
-            _categoryRepository = new Lazy<ICategoryRepository>(new CategoryRepository(_repositoriesContext));
+            _bookRepository = bookRepository;
+            _categoryRepository = categoryRepository;
         }
 
-        public IBookRepository BookRepository => _bookRepository.Value;
+        public IBookRepository BookRepository => _bookRepository;
 
-        public ICategoryRepository CategoryRepository => _categoryRepository.Value;
+        public ICategoryRepository CategoryRepository => _categoryRepository;
 
         public async Task SaveAsync()
         {

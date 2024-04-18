@@ -11,6 +11,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Services;
 using AspNetCoreRateLimit;
+
 var builder = WebApplication.CreateBuilder(args);
 
 LogManager.LoadConfiguration(String.Concat(Directory.GetCurrentDirectory(),"/nlog.config"));
@@ -24,14 +25,18 @@ builder.Services.AddControllers(config =>
     //Eðer desteklenmeyen bir formatta istek gelirse 406 koduyla hata vermesi saðlandý. 
     config.ReturnHttpNotAcceptable = true;
     //cache profile özelliðini entegre etme
-    config.CacheProfiles.Add("5mins",new CacheProfile { Duration=300});
+    config.CacheProfiles.Add("5mins", new CacheProfile { Duration = 300 });
 }
 )
     .AddCustomCsvFormatter()
+    //.AddXmlDataContractSerializerFormatters()
     //xml formatýnda da çýktý verme imkanýný açýyoruz.
-    .AddXmlDataContractSerializerFormatters()
-    .AddApplicationPart(typeof(AssemblyReference).Assembly);
-    //.AddNewtonsoftJson();
+    .AddApplicationPart(typeof(AssemblyReference).Assembly)
+    .AddNewtonsoftJson(opt =>
+    {
+        opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+    }
+    );
 
 //ServiceExtension classýnda bunu tanmladýk. bu sebeple sadece 52 satýrdaki kod yeterli oluyor.
 //builder.Services.AddScoped<ValidationFilterAttribute>(); //IOC
@@ -63,6 +68,8 @@ builder.Services.ConfigureHttpCacheHeaders();
 builder.Services.AddMemoryCache();
 builder.Services.ConfigureRateLimitingOptions();
 builder.Services.AddHttpContextAccessor();
+builder.Services.RegisterRepositories();
+builder.Services.RegisterServices();
 
 builder.Services.ConfigureIdentity();
 //Jwt bölümü

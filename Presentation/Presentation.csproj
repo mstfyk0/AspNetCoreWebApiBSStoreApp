@@ -10,7 +10,7 @@
 
     <PackageReference Include="Marvin.Cache.Headers" Version="7.1.0" />
 
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.28" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.JsonPatch" Version="8.0.3" />
     <PackageReference Include="Microsoft.AspNetCore.MVC.Core" Version="2.2.5" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="5.1.0" />

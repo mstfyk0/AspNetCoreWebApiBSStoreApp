@@ -9,6 +9,7 @@ using Entities.RequestFeatures;
 using System.Text.Json;
 using Marvin.Cache.Headers;
 using Microsoft.AspNetCore.Authorization;
+using System.Runtime.Serialization;
 
 namespace Presentation.Controllers
 {
@@ -68,6 +69,14 @@ namespace Presentation.Controllers
                 .BookService.GetOneBookByIdAsync(id, false);
 
             return Ok(book);
+        }
+
+        //[Authorize]
+        //[DataContract(IsReference = true)]
+        [HttpGet("details")]
+        public async Task<IActionResult> GetAllBooksWithDetailsAsync()
+        {
+            return Ok(await _manager.BookService.GetAllBooksWithDetailsAsync(false));
         }
 
         [Authorize(Roles = "Admin, Editpor ")]
